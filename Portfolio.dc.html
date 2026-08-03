@@ -56,6 +56,9 @@
     .pherologo { width: 72px !important; height: 72px !important; }
     .duo { grid-template-columns: 1fr !important; }
     .lead { font-size: 18px !important; }
+    .cardtext { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+    .cardtext.open { -webkit-line-clamp:unset; overflow:visible; }
+    .cardmore { display:inline-block !important; }
   }
 </style>
 </helmet>
@@ -161,18 +164,26 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { light: (() => { try { return localStorage.getItem('mf-theme') === 'light'; } catch (e) { return false; } })() };
+  state = { light: (() => { try { return localStorage.getItem('mf-theme') === 'light'; } catch (e) { return false; } })(), openIS: false, openA1: false };
   toggle = () => this.setState(s => {
     const light = !s.light;
     try { localStorage.setItem('mf-theme', light ? 'light' : 'dark'); } catch (e) {}
     return { light };
   });
+  toggleIS = (e) => { e.preventDefault(); e.stopPropagation(); this.setState(s => ({ openIS: !s.openIS })); };
+  toggleA1 = (e) => { e.preventDefault(); e.stopPropagation(); this.setState(s => ({ openA1: !s.openA1 })); };
   renderVals() {
     return {
       themeClass: this.state.light ? 'theme-light' : '',
       light: this.state.light,
       dark: !this.state.light,
       toggleTheme: this.toggle,
+      openIS: this.state.openIS ? 'open' : '',
+      openA1: this.state.openA1 ? 'open' : '',
+      labelIS: this.state.openIS ? 'Read less' : 'Read more',
+      labelA1: this.state.openA1 ? 'Read less' : 'Read more',
+      toggleIS: this.toggleIS,
+      toggleA1: this.toggleA1,
     };
   }
 }
