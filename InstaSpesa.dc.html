@@ -10,85 +10,140 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&amp;display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #1b1c1b; }
-  a { color: #35d3bf; text-decoration: none; }
-  a:hover { color: #5ee0cf; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --bg:#1b1c1b; --text:#e9eae7; --muted:#dfe0dd; --muted2:#c8cac7;
+    --accent:#35d3bf; --accent-hover:#5ee0cf; --glow:rgba(53,211,191,0.5);
+    --icon-bg:#242a32; --icon-bg-h:#2d333c; --card-bg:#111211; --card-border:#262c34;
+    --card2-bg:#1c2129; --panel-bg:#1e232b; --panel-border:#2d333c;
+    --nav-name:#e9eae7; --foot:#8f9490; --foot2:#6f746f; --hairline:#262c34;
+    --strong:#ffffff; --shadow:rgba(8,12,18,0.55); --deck-bg:#0f1319;
+  }
+  .theme-light {
+    --bg:#fbf6e9; --text:#3a362c; --muted:#686456; --muted2:#696456;
+    --accent:#3BB17D; --accent-hover:#2f9169; --glow:rgba(59,177,125,0);
+    --icon-bg:#ffffff; --icon-bg-h:#efe6ce; --card-bg:#fffdf6; --card-border:#e6dcc0;
+    --card2-bg:#fffdf6; --panel-bg:#fffdf6; --panel-border:#e2d7ba;
+    --nav-name:#33302a; --foot:#948d78; --foot2:#b0a992; --hairline:#e4d9bd;
+    --strong:#26231d; --shadow:rgba(120,100,50,0.20); --deck-bg:#e9dfc4;
+  }
+  body { background: var(--bg); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); }
   summary { list-style: none; }
   summary::-webkit-details-marker { display: none; }
   summary::marker { display: none; }
   @keyframes bgdrift { from { background-position: 0 0; } to { background-position: 46px 46px; } }
+  .page { background-color: var(--bg); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Cg stroke='%23dfe0dd' stroke-width='1.6' stroke-linecap='round' opacity='0.10'%3E%3Cpath d='M23 17V29M17 23H29'/%3E%3C/g%3E%3C/svg%3E"); }
+  .theme-light.page { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Cg stroke='%2329AB87' stroke-width='1.6' stroke-linecap='round' opacity='0.13'%3E%3Cpath d='M23 17V29M17 23H29'/%3E%3C/g%3E%3C/svg%3E"); }
+  .theme-light .lead { color: var(--text) !important; }
+  .theme-light li strong { color: #3B362C !important; }
+  @media (max-width: 640px) {
+    .nav { padding: 11px 18px !important; }
+    .navname { font-size: 13px !important; }
+    .navlinks { gap: 16px !important; }
+    .main { padding: 20px 18px 70px !important; }
+    .phero { flex-direction: column !important; align-items: flex-start !important; padding: 26px 24px !important; gap: 18px !important; }
+    .phero-h1 { font-size: 34px !important; }
+    .pherologo { width: 72px !important; height: 72px !important; }
+    .duo { grid-template-columns: 1fr !important; }
+    .lead { font-size: 18px !important; }
+  }
 </style>
 </helmet>
-<div style="min-height:100vh; background:#1b1c1b url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Cg stroke='%23dfe0dd' stroke-width='1.6' stroke-linecap='round' opacity='0.10'%3E%3Cpath d='M23 17V29M17 23H29'/%3E%3C/g%3E%3C/svg%3E&quot;); animation:bgdrift 16s linear infinite; color:#e9eae7; font-family:'Source Serif 4', Georgia, serif;">
-  <nav style="max-width:1000px; margin:0 auto; padding:22px 32px; display:flex; align-items:center; justify-content:space-between;">
-    <a href="Portfolio.dc.html" style="font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:0.5px; color:#e9eae7; font-size:15px;">MARCO FACCIN</a>
-    <div style="display:flex; align-items:center; gap:26px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:13.5px; letter-spacing:0.3px;">
-      <a href="Portfolio.dc.html" style="color:#b8bcb8;">Home</a>
+<div class="page {{ themeClass }}" style="min-height:100vh; animation:bgdrift 16s linear infinite; color:var(--text); font-family:'Bricolage Grotesque', sans-serif;">
+  <header style="position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--hairline);">
+  <nav class="nav" style="max-width:1000px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:space-between;">
+    <a href="Portfolio.dc.html" class="navname" style="font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:0.5px; color:var(--nav-name); font-size:15px;">MARCO FACCIN</a>
+    <div class="navlinks" style="display:flex; align-items:center; gap:22px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:13.5px; letter-spacing:0.3px;">
+      <a href="Portfolio.dc.html" style="color:var(--muted);">Home</a>
       <details style="position:relative;">
-        <summary style="cursor:pointer; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5); display:flex; align-items:center; gap:6px;">Projects <span style="font-size:9px;">▾</span></summary>
-        <div style="position:absolute; right:0; top:calc(100% + 10px); background:#1e232b; border:1px solid #2d333c; border-radius:9px; padding:6px; display:flex; flex-direction:column; min-width:196px; z-index:30; box-shadow:0 10px 30px rgba(8,12,18,0.55);">
-          <a href="InstaSpesa.dc.html" style="color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5); padding:9px 12px; border-radius:6px; background:#2a3038; display:flex; align-items:center; gap:11px;"><img src="assets/instaspesa-logo.png" alt="" style="width:26px; height:26px; border-radius:6px; object-fit:cover; flex:0 0 auto;">Istant Spesa</a>
-          <a href="A1MON.dc.html" style="color:#dfe0dd; padding:9px 12px; border-radius:6px; display:flex; align-items:center; gap:11px;" style-hover="background:#2a3038; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);"><img src="assets/a1-logo.png" alt="" style="width:26px; height:26px; object-fit:contain; flex:0 0 auto;">A1 MON</a>
+        <summary style="cursor:pointer; color:var(--accent); text-shadow:0 0 9px var(--glow); display:flex; align-items:center; gap:6px;">Projects <span style="font-size:9px;">▾</span></summary>
+        <div style="position:absolute; right:0; top:calc(100% + 10px); background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:9px; padding:6px; display:flex; flex-direction:column; min-width:196px; z-index:30; box-shadow:0 10px 30px var(--shadow);">
+          <a href="InstaSpesa.dc.html" style="color:var(--accent); text-shadow:0 0 9px var(--glow); padding:9px 12px; border-radius:6px; background:var(--icon-bg-h); display:flex; align-items:center; gap:11px;"><img src="assets/instaspesa-logo.png" alt="" style="width:26px; height:26px; border-radius:6px; object-fit:cover; flex:0 0 auto;">Istant Spesa</a>
+          <a href="A1MON.dc.html" style="color:var(--muted); padding:9px 12px; border-radius:6px; display:flex; align-items:center; gap:11px;" style-hover="background:var(--icon-bg-h); color:var(--accent); text-shadow:0 0 9px var(--glow);"><img src="assets/a1-logo.png" alt="" style="width:26px; height:26px; object-fit:contain; flex:0 0 auto;">A1 MON</a>
         </div>
       </details>
+      <button onClick="{{ toggleTheme }}" aria-label="Toggle light and dark theme" style="width:34px; height:34px; border:1px solid var(--panel-border); background:var(--icon-bg); border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--accent); padding:0; flex:0 0 auto;" style-hover="background:var(--icon-bg-h);">
+        <sc-if value="{{ light }}" hint-placeholder-val="{{ false }}">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"></path></svg>
+        </sc-if>
+        <sc-if value="{{ dark }}" hint-placeholder-val="{{ true }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+        </sc-if>
+      </button>
     </div>
   </nav>
+  </header>
 
-  <main style="max-width:1000px; margin:0 auto; padding:24px 32px 100px;">
-    <a href="Portfolio.dc.html" style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:0.5px; color:#8f9490;" style-hover="color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);">← Back to work</a>
+  <main class="main" style="max-width:1000px; margin:0 auto; padding:24px 32px 100px;">
+    <a href="Portfolio.dc.html" style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:0.5px; color:var(--foot);" style-hover="color:var(--accent); text-shadow:0 0 9px var(--glow);">← back to home</a>
 
-    <section style="margin-top:24px; border-radius:16px; background:linear-gradient(115deg,#243a72 0%,#4a5aa0 55%,#8a7fb2 100%); padding:40px 44px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
+    <section class="phero" style="margin-top:24px; border-radius:16px; background:linear-gradient(115deg,#8a2020 0%,#c62828 55%,#ef9a9a 100%); padding:40px 44px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
       <div>
         <p style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:2px; color:rgba(255,255,255,0.75);">GROCERY E-COMMERCE · UX REDESIGN</p>
-        <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:46px; letter-spacing:0.5px; color:#fff; margin-top:10px;">Istant Spesa</h1>
+        <h1 class="phero-h1" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:46px; letter-spacing:0.5px; color:#fff; margin-top:10px;">Istant Spesa</h1>
       </div>
-      <img src="assets/instaspesa-logo.png" alt="Istant Spesa logo" style="flex:0 0 auto; width:96px; height:96px; object-fit:contain;">
+      <img src="assets/instaspesa-logo.png" alt="Istant Spesa logo" class="pherologo" style="flex:0 0 auto; width:96px; height:96px; object-fit:contain;">
     </section>
 
-    <p style="margin-top:34px; font-size:21px; line-height:1.5; color:#eceded; max-width:760px;">Redesigning a supermarket’s online store around the pain points that made me abandon the real one.</p>
+    <p class="lead" style="margin-top:34px; font-size:21px; line-height:1.5; color:var(--text); max-width:760px;">Redesigning a supermarket’s online store around the pain points that made me abandon the real one.</p>
 
     <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:14px 44px;">
-      <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);">TYPE</p><p style="font-size:15px; color:#dfe0dd; margin-top:4px;">University final project</p></div>
-      <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);">COURSE</p><p style="font-size:15px; color:#dfe0dd; margin-top:4px;">Advanced Human-Computer Interaction</p></div>
-      <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);">FOCUS</p><p style="font-size:15px; color:#dfe0dd; margin-top:4px;">User research · IA · UI</p></div>
+      <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">TYPE</p><p style="font-size:15px; color:var(--muted); margin-top:4px;">University final project</p></div>
+      <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">COURSE</p><p style="font-size:15px; color:var(--muted); margin-top:4px;">Advanced Human-Computer Interaction</p></div>
+      <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">FOCUS</p><p style="font-size:15px; color:var(--muted); margin-top:4px;">User research · IA · UI</p></div>
     </div>
 
-    <div style="margin-top:34px; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
-      <div style="background:#1c2129; border:1px solid #262c34; border-radius:12px; padding:22px;">
-        <p style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:1.5px; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);">THE PRODUCT</p>
-        <p style="font-size:15.5px; line-height:1.55; color:#dfe0dd; margin-top:10px;">An online grocery store: browse aisles, build a cart, check out — without the friction.</p>
+    <div class="duo" style="margin-top:34px; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      <div style="background:var(--card2-bg); border:1px solid var(--card-border); border-radius:12px; padding:22px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">THE PRODUCT</p>
+        <p style="font-size:15.5px; line-height:1.55; color:var(--muted); margin-top:10px;">An online grocery store: browse aisles, build a cart, check out — without the friction.</p>
       </div>
-      <div style="background:#1c2129; border:1px solid #262c34; border-radius:12px; padding:22px;">
-        <p style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:1.5px; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);">WHY</p>
-        <p style="font-size:15.5px; line-height:1.55; color:#dfe0dd; margin-top:10px;">I’d worked in a supermarket, then abandoned its e-commerce — too hard to navigate. That became the brief.</p>
+      <div style="background:var(--card2-bg); border:1px solid var(--card-border); border-radius:12px; padding:22px;">
+        <p style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">WHY</p>
+        <p style="font-size:15.5px; line-height:1.55; color:var(--muted); margin-top:10px;">I’d worked in a supermarket, then abandoned its e-commerce — too hard to navigate. That became the brief.</p>
       </div>
     </div>
 
-    <div style="margin-top:24px; background:#1c2129; border:1px solid #262c34; border-radius:12px; padding:22px;">
-      <p style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:1.5px; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);">MAIN CHALLENGES</p>
+    <div style="margin-top:24px; background:var(--card2-bg); border:1px solid var(--card-border); border-radius:12px; padding:22px;">
+      <p style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">MAIN CHALLENGES</p>
       <ul style="margin-top:12px; display:flex; flex-direction:column; gap:9px; list-style:none;">
-        <li style="font-size:15.5px; line-height:1.5; color:#dfe0dd;"><strong style="color:#fff; font-weight:600;">Findability</strong> — locating one item in a huge catalogue.</li>
-        <li style="font-size:15.5px; line-height:1.5; color:#dfe0dd;"><strong style="color:#fff; font-weight:600;">Information architecture</strong> — hundreds of categories, always knowing where you are.</li>
-        <li style="font-size:15.5px; line-height:1.5; color:#dfe0dd;"><strong style="color:#fff; font-weight:600;">Cart clarity</strong> — total, quantities and substitutions in plain sight.</li>
+        <li style="font-size:15.5px; line-height:1.5; color:var(--muted);"><strong style="color:var(--strong); font-weight:600;">Findability</strong> — locating one item in a huge catalogue.</li>
+        <li style="font-size:15.5px; line-height:1.5; color:var(--muted);"><strong style="color:var(--strong); font-weight:600;">Information architecture</strong> — hundreds of categories, always knowing where you are.</li>
+        <li style="font-size:15.5px; line-height:1.5; color:var(--muted);"><strong style="color:var(--strong); font-weight:600;">Cart clarity</strong> — total, quantities and substitutions in plain sight.</li>
       </ul>
     </div>
 
     <section style="margin-top:52px;">
       <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px;">
-        <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5); font-size:15px; letter-spacing:2px;">PRESENTATION</h3>
-        <a href="presentations/instaspesa.html" target="_blank" rel="noopener" style="font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.5px; color:#8f9490;" style-hover="color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);">Open fullscreen ↗</a>
+        <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:15px; letter-spacing:2px;">PRESENTATION</h3>
+        <a href="presentations/instaspesa.html" target="_blank" rel="noopener" style="font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.5px; color:var(--foot);" style-hover="color:var(--accent); text-shadow:0 0 9px var(--glow);">Open fullscreen ↗</a>
       </div>
-      <div style="margin-top:16px; border-radius:14px; overflow:hidden; border:1px solid #262c34; aspect-ratio:16/9; background:#0f1319;">
-        <iframe src="presentations/instaspesa.html" title="Istant Spesa presentation" loading="lazy" style="width:100%; height:100%; border:0; display:block;"></iframe>
+      <div style="margin-top:16px; border-radius:14px; overflow:hidden; border:1px solid var(--card-border); aspect-ratio:16/9; background:var(--deck-bg);">
+        <iframe ref="{{ deckRef }}" src="presentations/instaspesa.html" title="Istant Spesa presentation" loading="lazy" style="width:100%; height:100%; border:0; display:block;"></iframe>
       </div>
     </section>
 
-    <footer style="margin-top:70px; padding-top:22px; border-top:1px solid #262c34; text-align:center; font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.4px; color:#8f9490; line-height:1.7;">
+    <section style="margin-top:64px;">
+      <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:15px; letter-spacing:2px;">OTHER PROJECTS</h3>
+      <div class="pgrid" style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:24px;">
+        <a href="A1MON.dc.html" style="display:block; border-radius:12px; overflow:hidden; background:var(--card-bg); border:1px solid var(--card-border); transition:transform .18s ease, border-color .18s ease;" style-hover="transform:translateY(-4px); border-color:#3a7a68;">
+          <div style="height:118px; background:linear-gradient(115deg,#204a42 0%,#3f7d6c 55%,#8fc7a8 100%); display:flex; align-items:center; justify-content:space-between; padding:0 26px;">
+            <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#f2f6f4; font-size:24px; letter-spacing:0.5px;">A1 MON</span>
+            <img src="assets/a1-logo.png" alt="A1 MON logo" style="width:74px; height:74px; object-fit:contain; flex:0 0 auto;">
+          </div>
+          <p style="padding:20px 26px 24px; font-size:15px; line-height:1.5; color:var(--muted2);">An LLM tool that turns media &amp; podcast coverage into readable insight.</p>
+        </a>
+      </div>
+    </section>
+
+    <footer style="margin-top:70px; padding-top:22px; border-top:1px solid var(--hairline); text-align:center; font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.4px; color:var(--foot); line-height:1.7;">
       <p>&copy; 2026 Marco Faccin. All rights reserved.</p>
-      <p style="font-size:11.5px; color:#6f746f;">Project work &mdash; credits to the respective owners.</p>
+      <p style="font-size:11.5px; color:var(--foot2);">Project work &mdash; credits to the respective owners.</p>
     </footer>
   </main>
 </div>
@@ -96,6 +151,12 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   deckRef = React.createRef();
+  state = { light: (() => { try { return localStorage.getItem('mf-theme') === 'light'; } catch (e) { return false; } })() };
+  toggle = () => this.setState(s => {
+    const light = !s.light;
+    try { localStorage.setItem('mf-theme', light ? 'light' : 'dark'); } catch (e) {}
+    return { light };
+  });
   async componentDidMount() {
     const url = 'presentations/instaspesa.html';
     const el = this.deckRef.current;
@@ -109,7 +170,13 @@ class Component extends DCLogic {
     }
   }
   renderVals() {
-    return { deckRef: this.deckRef };
+    return {
+      deckRef: this.deckRef,
+      themeClass: this.state.light ? 'theme-light' : '',
+      light: this.state.light,
+      dark: !this.state.light,
+      toggleTheme: this.toggle,
+    };
   }
 }
 </script>

@@ -10,96 +10,172 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&amp;display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { background: #1b1c1b; }
-  a { color: #35d3bf; text-decoration: none; }
-  a:hover { color: #5ee0cf; }
+  :root {
+    --bg:#1b1c1b; --text:#e9eae7; --muted:#dfe0dd; --muted2:#c8cac7;
+    --accent:#35d3bf; --accent-hover:#5ee0cf; --glow:rgba(53,211,191,0.5);
+    --icon-bg:#242a32; --icon-bg-h:#2d333c; --card-bg:#111211; --card-border:#262c34;
+    --card2-bg:#1c2129; --panel-bg:#1e232b; --panel-border:#2d333c;
+    --nav-name:#e9eae7; --foot:#8f9490; --foot2:#6f746f; --hairline:#262c34;
+    --strong:#ffffff; --shadow:rgba(8,12,18,0.55);
+  }
+  .theme-light {
+    --bg:#fbf6e9; --text:#3a362c; --muted:#686456; --muted2:#696456;
+    --accent:#3BB17D; --accent-hover:#2f9169; --glow:rgba(59,177,125,0);
+    --icon-bg:#ffffff; --icon-bg-h:#efe6ce; --card-bg:#fffdf6; --card-border:#e6dcc0;
+    --card2-bg:#fffdf6; --panel-bg:#fffdf6; --panel-border:#e2d7ba;
+    --nav-name:#33302a; --foot:#948d78; --foot2:#b0a992; --hairline:#e4d9bd;
+    --strong:#26231d; --shadow:rgba(120,100,50,0.20);
+  }
+  body { background: var(--bg); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); }
   summary { list-style: none; }
   summary::-webkit-details-marker { display: none; }
   summary::marker { display: none; }
   @keyframes bgdrift { from { background-position: 0 0; } to { background-position: 46px 46px; } }
+  .page { background-color: var(--bg); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Cg stroke='%23dfe0dd' stroke-width='1.6' stroke-linecap='round' opacity='0.10'%3E%3Cpath d='M23 17V29M17 23H29'/%3E%3C/g%3E%3C/svg%3E"); }
+  .theme-light.page { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Cg stroke='%2329AB87' stroke-width='1.6' stroke-linecap='round' opacity='0.13'%3E%3Cpath d='M23 17V29M17 23H29'/%3E%3C/g%3E%3C/svg%3E"); }
+  @media (max-width: 640px) {
+    .nav { padding: 11px 18px !important; }
+    .navname { font-size: 13px !important; }
+    .navlinks { gap: 16px !important; }
+    .main { padding: 26px 18px 66px !important; }
+    .hero { flex-direction: column-reverse !important; align-items: flex-start !important; gap: 22px !important; margin-top: 6px !important; }
+    .herophoto { width: 96px !important; height: 96px !important; }
+    .h1 { font-size: 27px !important; }
+    .h2 { font-size: 21px !important; margin-left: 0 !important; }
+    .intro { font-size: 15.5px !important; }
+    .contactrow { gap: 34px !important; }
+    .pgrid { grid-template-columns: 1fr !important; }
+    .phero { flex-direction: column !important; align-items: flex-start !important; padding: 26px 24px !important; gap: 18px !important; }
+    .phero-h1 { font-size: 34px !important; }
+    .pherologo { width: 72px !important; height: 72px !important; }
+    .duo { grid-template-columns: 1fr !important; }
+    .lead { font-size: 18px !important; }
+  }
 </style>
 </helmet>
-<div style="min-height:100vh; background:#1b1c1b url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Cg stroke='%23dfe0dd' stroke-width='1.6' stroke-linecap='round' opacity='0.10'%3E%3Cpath d='M23 17V29M17 23H29'/%3E%3C/g%3E%3C/svg%3E&quot;); animation:bgdrift 16s linear infinite; color:#e9eae7; font-family:'Source Serif 4', Georgia, serif;">
-  <nav style="max-width:1000px; margin:0 auto; padding:22px 32px; display:flex; align-items:center; justify-content:space-between;">
-    <a href="Portfolio.dc.html" style="font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:0.5px; color:#e9eae7; font-size:15px;">MARCO FACCIN</a>
-    <div style="display:flex; align-items:center; gap:26px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:13.5px; letter-spacing:0.3px;">
-      <a href="#projects" style="color: #37D3BF">Home</a>
+<div class="page {{ themeClass }}" style="min-height:100vh; animation:bgdrift 16s linear infinite; color:var(--text); font-family:'Bricolage Grotesque', sans-serif;">
+  <header style="position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--hairline);">
+  <nav class="nav" style="max-width:1000px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:space-between;">
+    <a href="Portfolio.dc.html" class="navname" style="font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:0.5px; color:var(--nav-name); font-size:15px;">MARCO FACCIN</a>
+    <div class="navlinks" style="display:flex; align-items:center; gap:22px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:13.5px; letter-spacing:0.3px;">
+      <a href="Portfolio.dc.html" style="color:var(--accent);">Home</a>
       <details style="position:relative;">
-        <summary style="cursor: pointer; color: #DFE0DC; display: flex; align-items: center; gap: 6px">Projects <span style="font-size:9px;">▾</span></summary>
-        <div style="position:absolute; right:0; top:calc(100% + 10px); background:#1e232b; border:1px solid #2d333c; border-radius:9px; padding:6px; display:flex; flex-direction:column; min-width:196px; z-index:30; box-shadow:0 10px 30px rgba(8,12,18,0.55);">
-          <a href="InstaSpesa.dc.html" style="color:#dfe0dd; padding:9px 12px; border-radius:6px; display:flex; align-items:center; gap:11px;" style-hover="background:#2a3038; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);"><img src="assets/instaspesa-logo.png" alt="" style="width:26px; height:26px; border-radius:6px; object-fit:cover; flex:0 0 auto;">Istant Spesa</a>
-          <a href="A1MON.dc.html" style="color:#dfe0dd; padding:9px 12px; border-radius:6px; display:flex; align-items:center; gap:11px;" style-hover="background:#2a3038; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5);"><img src="assets/a1-logo.png" alt="" style="width:26px; height:26px; object-fit:contain; flex:0 0 auto;">A1 MON</a>
+        <summary style="cursor:pointer; color:var(--muted); display:flex; align-items:center; gap:6px;">Projects <span style="font-size:9px;">▾</span></summary>
+        <div style="position:absolute; right:0; top:calc(100% + 10px); background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:9px; padding:6px; display:flex; flex-direction:column; min-width:196px; z-index:30; box-shadow:0 10px 30px var(--shadow);">
+          <a href="InstaSpesa.dc.html" style="color:var(--muted); padding:9px 12px; border-radius:6px; display:flex; align-items:center; gap:11px;" style-hover="background:var(--icon-bg-h); color:var(--accent); text-shadow:0 0 9px var(--glow);"><img src="assets/instaspesa-logo.png" alt="" style="width:26px; height:26px; border-radius:6px; object-fit:cover; flex:0 0 auto;">Istant Spesa</a>
+          <a href="A1MON.dc.html" style="color:var(--muted); padding:9px 12px; border-radius:6px; display:flex; align-items:center; gap:11px;" style-hover="background:var(--icon-bg-h); color:var(--accent); text-shadow:0 0 9px var(--glow);"><img src="assets/a1-logo.png" alt="" style="width:26px; height:26px; object-fit:contain; flex:0 0 auto;">A1 MON</a>
         </div>
       </details>
+      <button onClick="{{ toggleTheme }}" aria-label="Toggle light and dark theme" style="width:34px; height:34px; border:1px solid var(--panel-border); background:var(--icon-bg); border-radius:8px; display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--accent); padding:0; flex:0 0 auto;" style-hover="background:var(--icon-bg-h);">
+        <sc-if value="{{ light }}" hint-placeholder-val="{{ false }}">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"></path></svg>
+        </sc-if>
+        <sc-if value="{{ dark }}" hint-placeholder-val="{{ true }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+        </sc-if>
+      </button>
     </div>
   </nav>
+  </header>
 
-  <main style="max-width:1000px; margin:0 auto; padding:40px 32px 90px;">
-    <section style="display:flex; justify-content:space-between; align-items:flex-start; gap:40px; margin-top:20px;">
+  <main class="main" style="max-width:1000px; margin:0 auto; padding:40px 32px 90px;">
+    <section class="hero" style="display:flex; justify-content:space-between; align-items:flex-start; gap:40px; margin-top:20px;">
       <div>
-        <h1 style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5); font-size:34px; line-height:1.15; letter-spacing:0.5px;">MARCO FACCIN</h1>
-        <h2 style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5); font-size:28px; letter-spacing:0.5px; margin-left:44px; margin-top:2px;">UX DESIGNER</h2>
+        <h1 class="h1" style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:34px; line-height:1.15; letter-spacing:0.5px;">MARCO FACCIN</h1>
+        <h2 class="h2" style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:28px; letter-spacing:0.5px; margin-left:44px; margin-top:2px;">UX DESIGNER</h2>
       </div>
-      <div style="flex:0 0 auto; width:128px; height:128px; border-radius:50%; overflow:hidden; background:#242a32; border:1px solid #2d333c;">
+      <div class="herophoto" style="flex:0 0 auto; width:128px; height:128px; border-radius:50%; overflow:hidden; background:var(--icon-bg); border:1px solid var(--card-border);">
         <img src="assets/marco-photo.png" alt="Marco Faccin" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
     </section>
 
-    <section style="max-width:700px; margin-top:56px; font-size:17px; line-height:1.55; color:#dfe0dd;">
+    <section class="intro" style="max-width:700px; margin-top:56px; font-size:17px; line-height:1.55; color:var(--muted);">
       <p>I am pursuing a bachelor degree in Interfacce e Tecnologie della Comunicazione at the University of Trento.</p>
       <p style="margin-top:18px;">I’m passionate about combining my knowledge and background to build the most user-centered UX experience possible. I aim to become increasingly interdisciplinary in the future.</p>
     </section>
 
     <div style="display:flex; justify-content:center; margin-top:44px;">
-      <div style="border:1px solid #35d3bf; border-radius:6px; padding:11px 20px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:1px; color:#e9eae7; display:flex; align-items:center; gap:9px;">
-        <span style="width:9px; height:9px; border-radius:50%; background:#35d3bf;"></span>CURRENTLY OPEN TO NEW WORK
+      <div style="border:1px solid var(--accent); border-radius:6px; padding:11px 20px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:1px; color:var(--text); display:flex; align-items:center; gap:9px;">
+        <span style="width:9px; height:9px; border-radius:50%; background:var(--accent);"></span>CURRENTLY OPEN TO NEW WORK
       </div>
     </div>
 
     <section style="margin-top:52px;">
-      <p style="font-size:16px; color:#c8cac7;">more about me:</p>
-      <div style="display:flex; gap:70px; justify-content:center; margin-top:26px;">
-        <a href="mailto:marco.faccin.schio@gmail.com" title="Email" style="width:44px; height:44px; border-radius:9px; background:#242a32; display:flex; align-items:center; justify-content:center;" style-hover="background:#2d333c;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#35d3bf" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+      <p style="font-size:16px; color:var(--muted2); text-align:center;">more about me:</p>
+      <div class="contactrow" style="display:flex; gap:70px; justify-content:center; margin-top:26px;">
+        <a href="mailto:marco.faccin.schio@gmail.com" title="Email" style="width:44px; height:44px; border-radius:9px; background:var(--icon-bg); display:flex; align-items:center; justify-content:center; color:var(--accent);" style-hover="background:var(--icon-bg-h);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
         </a>
-        <a href="https://www.linkedin.com/in/marco-faccin" target="_blank" rel="noopener" title="LinkedIn" style="width:44px; height:44px; border-radius:9px; background:#242a32; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5); font-size:17px;" style-hover="background:#2d333c;">in</a>
-        <a href="https://drive.google.com/file/d/1Vdra9jllRYxXMP_CFXLRFgCn8r9N0rv2/view?usp=sharing" target="_blank" rel="noopener" title="Curriculum" style="width:44px; height:44px; border-radius:9px; background:#242a32; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5); font-size:14px;" style-hover="background:#2d333c;">CV</a>
+        <a href="https://www.linkedin.com/in/marco-faccin" target="_blank" rel="noopener" title="LinkedIn" style="width:44px; height:44px; border-radius:9px; background:var(--icon-bg); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:17px;" style-hover="background:var(--icon-bg-h);">in</a>
+        <a href="https://drive.google.com/file/d/1Vdra9jllRYxXMP_CFXLRFgCn8r9N0rv2/view?usp=sharing" target="_blank" rel="noopener" title="Curriculum" style="width:44px; height:44px; border-radius:9px; background:var(--icon-bg); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:14px;" style-hover="background:var(--icon-bg-h);">CV</a>
       </div>
     </section>
 
     <section id="projects" style="margin-top:80px;">
-      <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#35d3bf; text-shadow:0 0 9px rgba(53,211,191,0.5); font-size:15px; letter-spacing:2px;">PROJECTS</h3>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:24px;">
+      <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:15px; letter-spacing:2px;">PROJECTS</h3>
+      <div class="pgrid" style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:24px;">
 
-        <a href="InstaSpesa.dc.html" style="display:block; border-radius:12px; overflow:hidden; background:#111211; border:1px solid #262c34; transition:transform .18s ease, border-color .18s ease;" style-hover="transform:translateY(-4px); border-color:#3a5a8a;">
-          <div style="height:118px; background:linear-gradient(115deg,#243a72 0%,#4a5aa0 55%,#8a7fb2 100%); display:flex; align-items:center; justify-content:space-between; padding:0 26px;">
+        <a href="InstaSpesa.dc.html" style="display:block; border-radius:12px; overflow:hidden; background:var(--card-bg); border:1px solid var(--card-border); transition:transform .18s ease, border-color .18s ease;" style-hover="transform:translateY(-4px); border-color:#b34a4a;">
+          <div style="height:118px; background:linear-gradient(115deg, #C8202EEB, #F02F3FEB, #D74C57EB); display:flex; align-items:center; justify-content:space-between; padding:0 26px;">
             <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#f4f5f8; font-size:24px; letter-spacing:0.5px;">ISTANT SPESA</span>
             <img src="assets/instaspesa-logo.png" alt="Istant Spesa logo" style="width:74px; height:74px; border-radius:14px; object-fit:cover; flex:0 0 auto;">
           </div>
-          <p style="padding:20px 26px 24px; font-size:15px; line-height:1.5; color:#c9cbc8;">A redesign of a grocery store e-commerce web application, developed as a final project for the Advanced Human-Computer Interaction course, addressing real user pain points identified through user research.</p>
+          <p style="padding:20px 26px 24px; font-size:15px; line-height:1.5; color:var(--muted2);">A redesign of a grocery store e-commerce web application, developed as a final project for the Advanced Human-Computer Interaction course, addressing real user pain points identified through user research.</p>
         </a>
 
-        <a href="A1MON.dc.html" style="display:block; border-radius:12px; overflow:hidden; background:#111211; border:1px solid #262c34; transition:transform .18s ease, border-color .18s ease;" style-hover="transform:translateY(-4px); border-color:#3a7a68;">
+        <a href="A1MON.dc.html" style="display:block; border-radius:12px; overflow:hidden; background:var(--card-bg); border:1px solid var(--card-border); transition:transform .18s ease, border-color .18s ease;" style-hover="transform:translateY(-4px); border-color:#3a7a68;">
           <div style="height:118px; background:linear-gradient(115deg,#204a42 0%,#3f7d6c 55%,#8fc7a8 100%); display:flex; align-items:center; justify-content:space-between; padding:0 26px;">
             <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#f2f6f4; font-size:24px; letter-spacing:0.5px;">A1 MON</span>
             <img src="assets/a1-logo.png" alt="A1 MON logo" style="width:74px; height:74px; object-fit:contain; flex:0 0 auto;">
           </div>
-          <p style="padding:20px 26px 24px; font-size:15px; line-height:1.5; color:#c9cbc8;">During the HIT UXChallenge 2026, a 7-day design sprint, I collaborated with a team of four to conceptualize a web application for the analysis of traditional media and podcasts, leveraging Large Language Models (LLMs).</p>
+          <p style="padding:20px 26px 24px; font-size:15px; line-height:1.5; color:var(--muted2);">During the HIT UXChallenge 2026, a 7-day design sprint, I collaborated with a team of four to conceptualize a web application for the analysis of traditional media and podcasts, leveraging Large Language Models (LLMs).</p>
         </a>
 
       </div>
     </section>
 
-    <footer style="margin-top:70px; padding-top:22px; border-top:1px solid #262c34; text-align:center; font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.4px; color:#8f9490; line-height:1.7;">
+    <footer style="margin-top:70px; padding-top:22px; border-top:1px solid var(--hairline); text-align:center; font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.4px; color:var(--foot); line-height:1.7;">
       <p>&copy; 2026 Marco Faccin. All rights reserved.</p>
-      <p style="font-size:11.5px; color:#6f746f;">Project work &mdash; credits to the respective owners.</p>
+      <p style="font-size:11.5px; color:var(--foot2);">Project work &mdash; credits to the respective owners.</p>
     </footer>
   </main>
 </div>
+
+<template id="__bundler_thumbnail" data-bg-color="#1b1c1b">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1b1c1b"/>
+    <g stroke="#dfe0dd" stroke-width="6" stroke-linecap="round" opacity="0.12">
+      <path d="M200 180v90M155 225h90"/><path d="M600 180v90M555 225h90"/><path d="M1000 180v90M955 225h90"/>
+      <path d="M400 560v90M355 605h90"/><path d="M800 560v90M755 605h90"/>
+    </g>
+    <text x="600" y="400" font-family="'Space Grotesk',sans-serif" font-size="86" font-weight="700" fill="#35d3bf" text-anchor="middle">MARCO FACCIN</text>
+    <text x="600" y="470" font-family="'Space Grotesk',sans-serif" font-size="44" font-weight="700" fill="#35d3bf" text-anchor="middle" opacity="0.85">UX DESIGNER</text>
+  </svg>
+</template>
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { light: (() => { try { return localStorage.getItem('mf-theme') === 'light'; } catch (e) { return false; } })() };
+  toggle = () => this.setState(s => {
+    const light = !s.light;
+    try { localStorage.setItem('mf-theme', light ? 'light' : 'dark'); } catch (e) {}
+    return { light };
+  });
+  renderVals() {
+    return {
+      themeClass: this.state.light ? 'theme-light' : '',
+      light: this.state.light,
+      dark: !this.state.light,
+      toggleTheme: this.toggle,
+    };
+  }
+}
+</script>
 </body>
 </html>
