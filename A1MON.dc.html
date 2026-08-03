@@ -28,9 +28,10 @@
     --icon-bg:#ffffff; --icon-bg-h:#efe6ce; --card-bg:#fffdf6; --card-border:#e6dcc0;
     --card2-bg:#fffdf6; --panel-bg:#fffdf6; --panel-border:#e2d7ba;
     --nav-name:#33302a; --foot:#948d78; --foot2:#b0a992; --hairline:#e4d9bd;
-    --strong:#26231d; --shadow:rgba(120,100,50,0.20); --deck-bg:#e9dfc4;
+    --strong:#3B362C; --shadow:rgba(120,100,50,0.20); --deck-bg:#e9dfc4;
   }
   body { background: var(--bg); }
+  html:has(.theme-light), body:has(.theme-light) { background: #fbf6e9; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { color: var(--accent-hover); }
   summary { list-style: none; }
@@ -151,12 +152,17 @@
 class Component extends DCLogic {
   deckRef = React.createRef();
   state = { light: (() => { try { return localStorage.getItem('mf-theme') === 'light'; } catch (e) { return false; } })() };
+  applyThemeBg() {
+    const c = this.state.light ? '#fbf6e9' : '#1b1c1b';
+    try { document.documentElement.style.background = c; document.body.style.background = c; } catch (e) {}
+  }
   toggle = () => this.setState(s => {
     const light = !s.light;
     try { localStorage.setItem('mf-theme', light ? 'light' : 'dark'); } catch (e) {}
     return { light };
-  });
+  }, () => this.applyThemeBg());
   async componentDidMount() {
+    this.applyThemeBg();
     const url = 'presentations/a1-mon.html';
     const el = this.deckRef.current;
     if (!el) return;
