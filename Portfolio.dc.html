@@ -26,7 +26,7 @@
   }
   .theme-light {
     --bg:#fbf6e9; --text:#3a362c; --muted:#686456; --muted2:#696456;
-    --accent:#3BB17D; --accent-hover:#2f9169; --glow:rgba(59,177,125,0);
+    --accent:#3BB17D; --accent-hover:#2f9169; --glow:rgba(59,177,125,0.35);
     --icon-bg:#ffffff; --icon-bg-h:#efe6ce; --card-bg:#fffdf6; --card-border:#e6dcc0;
     --card2-bg:#fffdf6; --panel-bg:#fffdf6; --panel-border:#e2d7ba;
     --nav-name:#33302a; --foot:#948d78; --foot2:#b0a992; --hairline:#e4d9bd;
@@ -36,6 +36,7 @@
   html:has(.theme-light), body:has(.theme-light) { background: #fbf6e9; }
   a { color: var(--accent); text-decoration: none; }
   a:hover { color: var(--accent-hover); }
+  .cardshort, .cardmore { display: none; }
   summary { list-style: none; }
   summary::-webkit-details-marker { display: none; }
   summary::marker { display: none; }
@@ -59,10 +60,32 @@
     .pherologo { width: 72px !important; height: 72px !important; }
     .duo { grid-template-columns: 1fr !important; }
     .lead { font-size: 18px !important; }
-    .cardtext { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-    .cardtext.open { -webkit-line-clamp:unset; overflow:visible; }
+    .cardbody .cardfull { display:none; }
+    .cardbody.open .cardfull { display:block; }
+    .cardbody .cardshort { display:block; }
+    .cardbody.open .cardshort { display:none; }
     .cardmore { display:inline-block !important; }
   }
+  .theme-light > header { background:#204a42 !important; border-bottom-color:rgba(255,255,255,0.16) !important; }
+  .theme-light > header .navname { color:#fff !important; }
+  .theme-light > header .navlinks > a { color:#fff !important; }
+  .theme-light > header .navlinks summary { color:#fff !important; text-shadow:none !important; }
+  .theme-light > header .navlinks > button { color:#fff !important; background:rgba(255,255,255,0.16) !important; border-color:rgba(255,255,255,0.34) !important; }
+  .theme-light > header .navlinks details > div { background:#204a42 !important; border-color:rgba(255,255,255,0.28) !important; }
+  .theme-light > header .navlinks details > div a { color:#fff !important; text-shadow:none !important; }
+  .theme-light > header .navlinks details > div a[data-active] { background:#3BB17D !important; }
+  .theme-light > header .navlinks details > div a:hover { background:#3BB17D !important; color:#fff !important; text-shadow:none !important; }
+  .theme-light > header .navlinks a[data-navactive],
+  .theme-light > header .navlinks summary[data-navactive] { color:#8BF7DD !important; text-shadow:0 0 6px rgba(139,247,221,0.9), 0 0 16px rgba(139,247,221,0.55) !important; }
+  .page:not(.theme-light) > header .navlinks a[data-navactive],
+  .page:not(.theme-light) > header .navlinks summary[data-navactive] { color:#7CF5DE !important; text-shadow:0 0 6px rgba(124,245,222,0.95), 0 0 18px rgba(124,245,222,0.6) !important; }
+  .page:not(.theme-light) > header .navlinks summary:not([data-navactive]),
+  .page:not(.theme-light) > header .navlinks > a:not([data-navactive]) { color:#e9eae7 !important; }
+  .theme-light .contactrow a { color:#3BB17D !important; border-color:rgba(59,177,125,0.4) !important; box-shadow:0 0 12px rgba(59,177,125,0.3) !important; }
+  .theme-light .contactrow a svg { filter: drop-shadow(0 0 3px rgba(59,177,125,0.6)); }
+  .theme-light .contactrow a:hover { box-shadow:0 0 18px rgba(59,177,125,0.5) !important; }
+  .theme-light > header .navlinks > button:hover { background:rgba(255,255,255,0.3) !important; border-color:rgba(255,255,255,0.55) !important; }
+  .page::after { content:""; position:fixed; inset:0; z-index:60; pointer-events:none; opacity:0.55; mix-blend-mode:soft-light; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:260px 260px; }
 </style>
 </helmet>
 <div class="page {{ themeClass }}" style="min-height: 100vh; animation: bgdrift 16s linear infinite; color: var(--text); font-family: 'Bricolage Grotesque', sans-serif">
@@ -70,7 +93,7 @@
   <nav class="nav" style="max-width:1000px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:space-between;">
     <a href="Portfolio.dc.html" class="navname" style="font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:0.5px; color:var(--nav-name); font-size:15px;">MARCO FACCIN</a>
     <div class="navlinks" style="display:flex; align-items:center; gap:22px; font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:13.5px; letter-spacing:0.3px;">
-      <a href="Portfolio.dc.html" style="color:var(--accent);">Home</a>
+      <a href="Portfolio.dc.html" style="color:var(--accent);" data-navactive>Home</a>
       <details style="position:relative;">
         <summary style="cursor:pointer; color:var(--muted); display:flex; align-items:center; gap:6px;">Projects <span style="font-size:9px;">▾</span></summary>
         <div style="position:absolute; right:0; top:calc(100% + 10px); background:var(--panel-bg); border:1px solid var(--panel-border); border-radius:9px; padding:6px; display:flex; flex-direction:column; min-width:196px; z-index:30; box-shadow:0 10px 30px var(--shadow);">
@@ -128,13 +151,14 @@
       <div class="pgrid" style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:24px;">
 
         <a href="InstaSpesa.dc.html" style="display:block; border-radius:12px; overflow:hidden; background:var(--card-bg); border:1px solid var(--card-border); transition:transform .18s ease, border-color .18s ease;" style-hover="transform:translateY(-4px); border-color:#b34a4a;">
-          <div style="height:118px; background:linear-gradient(115deg, #C8202EEB, #F02F3FEB, #D74C57EB); display:flex; align-items:center; justify-content:space-between; padding:0 26px;">
+          <div style="height:118px; background:linear-gradient(115deg, #8C1719 0%, #DB1F23 55%, #E76E70 100%); display:flex; align-items:center; justify-content:space-between; padding:0 26px;">
             <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#fff4f4; font-size:24px; letter-spacing:0.5px;">ISTANT SPESA</span>
             <img src="assets/instaspesa-logo.png" alt="Istant Spesa logo" style="width:74px; height:74px; border-radius:14px; object-fit:cover; flex:0 0 auto;">
           </div>
-          <div style="padding: 20px 26px 24px;">
-            <p class="cardtext {{ openIS }}" style="font-size: 15px; line-height: 1.5; color: var(--muted); margin:0;">A redesign of a grocery store e-commerce web application, developed as a final project for the Advanced Human-Computer Interaction course, addressing real user pain points identified through user research.</p>
-            <span class="cardmore" onClick="{{ toggleIS }}" style="display:none; margin-top:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:0.5px; color:var(--accent); cursor:pointer;">{{ labelIS }}</span>
+          <div class="cardbody {{ openIS }}" style="padding: 20px 26px 24px;">
+            <p class="cardshort" style="font-size: 15px; line-height: 1.5; color: var(--muted); margin:0;">An online supermarket to browse aisles, fill a cart and check out.</p>
+            <p class="cardfull" style="font-size: 15px; line-height: 1.5; color: var(--muted); margin:0;">A redesign of a grocery store e-commerce web application, developed as a final project for the Advanced Human-Computer Interaction course, addressing real user pain points identified through user research.</p>
+            <span class="cardmore" onClick="{{ toggleIS }}" style="margin-top:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:0.5px; color:var(--accent); cursor:pointer;">{{ labelIS }}</span>
           </div>
         </a>
 
@@ -143,9 +167,10 @@
             <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#f2f6f4; font-size:24px; letter-spacing:0.5px;">A1 MON</span>
             <img src="assets/a1-logo.png" alt="A1 MON logo" style="width:74px; height:74px; object-fit:contain; flex:0 0 auto;">
           </div>
-          <div style="padding: 20px 26px 24px;">
-            <p class="cardtext {{ openA1 }}" style="font-size: 15px; line-height: 1.5; color: var(--muted); margin:0;">During the HIT UXChallenge 2026, a 7-day design sprint, I collaborated with a team of four to conceptualize a web application for the analysis of traditional media and podcasts, leveraging Large Language Models (LLMs).</p>
-            <span class="cardmore" onClick="{{ toggleA1 }}" style="display:none; margin-top:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:0.5px; color:var(--accent); cursor:pointer;">{{ labelA1 }}</span>
+          <div class="cardbody {{ openA1 }}" style="padding: 20px 26px 24px;">
+            <p class="cardshort" style="font-size: 15px; line-height: 1.5; color: var(--muted); margin:0;">An LLM tool that turns media &amp; podcast coverage into readable insight.</p>
+            <p class="cardfull" style="font-size: 15px; line-height: 1.5; color: var(--muted); margin:0;">During the HIT UXChallenge 2026, a 7-day design sprint, I collaborated with a team of four to conceptualize a web application for the analysis of traditional media and podcasts, leveraging Large Language Models (LLMs).</p>
+            <span class="cardmore" onClick="{{ toggleA1 }}" style="margin-top:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:0.5px; color:var(--accent); cursor:pointer;">{{ labelA1 }}</span>
           </div>
         </a>
 
@@ -155,7 +180,7 @@
     <footer style="margin-top:70px; padding-top:22px; border-top:1px solid var(--hairline); text-align:center; font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.4px; color:var(--foot); line-height:1.7;">
       <p>© 2026 Marco Faccin. All rights reserved.</p>
       <p style="font-size:11.5px; color:var(--foot2);">Project work — credits to the respective owners.</p>
-      <p style="font-size:11.5px; color:var(--foot2);">Built with Claude, designed by a human.</p>
+      <p style="font-size:11.5px; color:var(--foot2);">Programmed by AI, designed by a human.</p>
     </footer>
   </main>
 </div>
