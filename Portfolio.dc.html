@@ -8,6 +8,8 @@
 <body>
 <x-dc>
 <helmet>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1b1c1b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&amp;display=swap" rel="stylesheet">
@@ -63,7 +65,7 @@
   }
 </style>
 </helmet>
-<div class="page {{ themeClass }}" style="min-height:100vh; animation:bgdrift 16s linear infinite; color:var(--text); font-family:'Bricolage Grotesque', sans-serif;">
+<div class="page {{ themeClass }}" style="min-height: 100vh; animation: bgdrift 16s linear infinite; color: var(--text); font-family: 'Bricolage Grotesque', sans-serif">
   <header style="position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--hairline);">
   <nav class="nav" style="max-width:1000px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; justify-content:space-between;">
     <a href="Portfolio.dc.html" class="navname" style="font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:0.5px; color:var(--nav-name); font-size:15px;">MARCO FACCIN</a>
@@ -91,8 +93,8 @@
   <main class="main" style="max-width:1000px; margin:0 auto; padding:40px 32px 90px;">
     <section class="hero" style="display:flex; justify-content:space-between; align-items:flex-start; gap:40px; margin-top:20px;">
       <div>
-        <h1 class="h1" style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:34px; line-height:1.15; letter-spacing:0.5px;">MARCO FACCIN</h1>
-        <h2 class="h2" style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:28px; letter-spacing:0.5px; margin-left:44px; margin-top:2px;">UX DESIGNER</h2>
+        <h1 class="h1" style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; color: var(--accent); text-shadow: 0 0 9px var(--glow); font-size: 34px; line-height: 1.15; letter-spacing: 0.5px">MARCO FACCIN</h1>
+        <h2 class="h2" style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; color: var(--accent); text-shadow: 0 0 9px var(--glow); font-size: 28px; letter-spacing: 0.5px; margin-left: 44px; margin-top: 2px">UX DESIGNER</h2>
       </div>
       <div class="herophoto" style="flex:0 0 auto; width:128px; height:128px; border-radius:50%; overflow:hidden; background:var(--icon-bg); border:1px solid var(--card-border);">
         <img src="assets/marco-photo.png" alt="Marco Faccin" style="width:100%; height:100%; object-fit:cover; display:block;">
@@ -100,29 +102,29 @@
     </section>
 
     <section class="intro" style="max-width:700px; margin-top:56px; font-size:17px; line-height:1.55; color:var(--muted);">
-      <p>I am pursuing a bachelor degree in Interfacce e Tecnologie della Comunicazione at the University of Trento.</p>
-      <p style="margin-top:18px;">I’m passionate about combining my knowledge and background to build the most user-centered UX experience possible. I aim to become increasingly interdisciplinary in the future.</p>
+      <p style="color: var(--muted)">I am pursuing a bachelor degree in Interfacce e Tecnologie della Comunicazione at the University of Trento.</p>
+      <p style="margin-top: 18px; color: var(--muted)">I’m passionate about combining my knowledge and background to build the most user-centered UX experience possible. I aim to become increasingly interdisciplinary in the future.</p>
     </section>
 
     <div style="display:flex; justify-content:center; margin-top:44px;">
       <div style="border:1px solid var(--accent); border-radius:6px; padding:11px 20px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:1px; color:var(--text); display:flex; align-items:center; gap:9px;">
-        <span style="width:9px; height:9px; border-radius:50%; background:var(--accent);"></span>CURRENTLY OPEN TO NEW WORK
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: var(--accent); color: var(--muted2)"></span>CURRENTLY OPEN TO NEW WORK
       </div>
     </div>
 
     <section style="margin-top:52px;">
-      <p style="font-size:16px; color:var(--muted2); text-align:center;">more about me:</p>
+      <p style="font-size: 16px; color: var(--muted); text-align: center">more about me:</p>
       <div class="contactrow" style="display:flex; gap:70px; justify-content:center; margin-top:26px;">
-        <a href="mailto:marco.faccin.schio@gmail.com" title="Email" style="width:44px; height:44px; border-radius:9px; background:var(--icon-bg); display:flex; align-items:center; justify-content:center; color:var(--accent);" style-hover="background:var(--icon-bg-h);">
+        <a href="mailto:marco.faccin.schio@gmail.com" title="Email" style="width: 44px; height: 44px; border-radius: 9px; background: var(--icon-bg); display: flex; align-items: center; justify-content: center; color: var(--accent); border-width: 1px; border-style: solid; border-color: var(--accent)" style-hover="background:var(--icon-bg-h);">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
         </a>
-        <a href="https://www.linkedin.com/in/marco-faccin" target="_blank" rel="noopener" title="LinkedIn" style="width:44px; height:44px; border-radius:9px; background:var(--icon-bg); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:17px;" style-hover="background:var(--icon-bg-h);">in</a>
-        <a href="https://drive.google.com/file/d/1Vdra9jllRYxXMP_CFXLRFgCn8r9N0rv2/view?usp=sharing" target="_blank" rel="noopener" title="Curriculum" style="width:44px; height:44px; border-radius:9px; background:var(--icon-bg); display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:14px;" style-hover="background:var(--icon-bg-h);">CV</a>
+        <a href="https://www.linkedin.com/in/marco-faccin" target="_blank" rel="noopener" title="LinkedIn" style="width: 44px; height: 44px; border-radius: 9px; background: var(--icon-bg); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk',sans-serif; font-weight: 700; color: var(--accent); text-shadow: 0 0 9px var(--glow); font-size: 17px; border-width: 1px; border-style: solid; border-color: var(--accent)" style-hover="background:var(--icon-bg-h);">in</a>
+        <a href="https://drive.google.com/file/d/1Vdra9jllRYxXMP_CFXLRFgCn8r9N0rv2/view?usp=sharing" target="_blank" rel="noopener" title="Curriculum" style="width: 44px; height: 44px; border-radius: 9px; background: var(--icon-bg); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk',sans-serif; font-weight: 700; color: var(--accent); text-shadow: 0 0 9px var(--glow); font-size: 14px; border-width: 1px; border-style: solid; border-color: var(--accent)" style-hover="background:var(--icon-bg-h);">CV</a>
       </div>
     </section>
 
     <section id="projects" style="margin-top:80px;">
-      <h3 style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--accent); text-shadow:0 0 9px var(--glow); font-size:15px; letter-spacing:2px;">PROJECTS</h3>
+      <h3 style="font-family: 'Space Grotesk',sans-serif; font-weight: 700; color: var(--accent); text-shadow: 0 0 9px var(--glow); font-size: 15px; letter-spacing: 2px">PROJECTS</h3>
       <div class="pgrid" style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:24px;">
 
         <a href="InstaSpesa.dc.html" style="display:block; border-radius:12px; overflow:hidden; background:var(--card-bg); border:1px solid var(--card-border); transition:transform .18s ease, border-color .18s ease;" style-hover="transform:translateY(-4px); border-color:#b34a4a;">
@@ -130,7 +132,10 @@
             <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#fff4f4; font-size:24px; letter-spacing:0.5px;">ISTANT SPESA</span>
             <img src="assets/instaspesa-logo.png" alt="Istant Spesa logo" style="width:74px; height:74px; border-radius:14px; object-fit:cover; flex:0 0 auto;">
           </div>
-          <p style="padding:20px 26px 24px; font-size:15px; line-height:1.5; color:var(--muted2);">A redesign of a grocery store e-commerce web application, developed as a final project for the Advanced Human-Computer Interaction course, addressing real user pain points identified through user research.</p>
+          <div style="padding: 20px 26px 24px;">
+            <p class="cardtext {{ openIS }}" style="font-size: 15px; line-height: 1.5; color: var(--muted); margin:0;">A redesign of a grocery store e-commerce web application, developed as a final project for the Advanced Human-Computer Interaction course, addressing real user pain points identified through user research.</p>
+            <span class="cardmore" onClick="{{ toggleIS }}" style="display:none; margin-top:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:0.5px; color:var(--accent); cursor:pointer;">{{ labelIS }}</span>
+          </div>
         </a>
 
         <a href="A1MON.dc.html" style="display:block; border-radius:12px; overflow:hidden; background:var(--card-bg); border:1px solid var(--card-border); transition:transform .18s ease, border-color .18s ease;" style-hover="transform:translateY(-4px); border-color:#3a7a68;">
@@ -138,25 +143,29 @@
             <span style="font-family:'Space Grotesk',sans-serif; font-weight:700; color:#f2f6f4; font-size:24px; letter-spacing:0.5px;">A1 MON</span>
             <img src="assets/a1-logo.png" alt="A1 MON logo" style="width:74px; height:74px; object-fit:contain; flex:0 0 auto;">
           </div>
-          <p style="padding:20px 26px 24px; font-size:15px; line-height:1.5; color:var(--muted2);">During the HIT UXChallenge 2026, a 7-day design sprint, I collaborated with a team of four to conceptualize a web application for the analysis of traditional media and podcasts, leveraging Large Language Models (LLMs).</p>
+          <div style="padding: 20px 26px 24px;">
+            <p class="cardtext {{ openA1 }}" style="font-size: 15px; line-height: 1.5; color: var(--muted); margin:0;">During the HIT UXChallenge 2026, a 7-day design sprint, I collaborated with a team of four to conceptualize a web application for the analysis of traditional media and podcasts, leveraging Large Language Models (LLMs).</p>
+            <span class="cardmore" onClick="{{ toggleA1 }}" style="display:none; margin-top:9px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:0.5px; color:var(--accent); cursor:pointer;">{{ labelA1 }}</span>
+          </div>
         </a>
 
       </div>
     </section>
 
     <footer style="margin-top:70px; padding-top:22px; border-top:1px solid var(--hairline); text-align:center; font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.4px; color:var(--foot); line-height:1.7;">
-      <p>&copy; 2026 Marco Faccin. All rights reserved.</p>
-      <p style="font-size:11.5px; color:var(--foot2);">Project work &mdash; credits to the respective owners.</p>
+      <p>© 2026 Marco Faccin. All rights reserved.</p>
+      <p style="font-size:11.5px; color:var(--foot2);">Project work — credits to the respective owners.</p>
+      <p style="font-size:11.5px; color:var(--foot2);">Built with Claude, designed by a human.</p>
     </footer>
   </main>
 </div>
 
 <template id="__bundler_thumbnail" data-bg-color="#1b1c1b">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#1b1c1b"/>
+    <rect width="1200" height="800" fill="#1b1c1b"></rect>
     <g stroke="#dfe0dd" stroke-width="6" stroke-linecap="round" opacity="0.12">
-      <path d="M200 180v90M155 225h90"/><path d="M600 180v90M555 225h90"/><path d="M1000 180v90M955 225h90"/>
-      <path d="M400 560v90M355 605h90"/><path d="M800 560v90M755 605h90"/>
+      <path d="M200 180v90M155 225h90"></path><path d="M600 180v90M555 225h90"></path><path d="M1000 180v90M955 225h90"></path>
+      <path d="M400 560v90M355 605h90"></path><path d="M800 560v90M755 605h90"></path>
     </g>
     <text x="600" y="400" font-family="'Space Grotesk',sans-serif" font-size="86" font-weight="700" fill="#35d3bf" text-anchor="middle">MARCO FACCIN</text>
     <text x="600" y="470" font-family="'Space Grotesk',sans-serif" font-size="44" font-weight="700" fill="#35d3bf" text-anchor="middle" opacity="0.85">UX DESIGNER</text>
@@ -169,6 +178,11 @@ class Component extends DCLogic {
   applyThemeBg() {
     const c = this.state.light ? '#fbf6e9' : '#1b1c1b';
     try { document.documentElement.style.background = c; document.body.style.background = c; } catch (e) {}
+    try {
+      let m = document.querySelector('meta[name="theme-color"]');
+      if (!m) { m = document.createElement('meta'); m.setAttribute('name', 'theme-color'); document.head.appendChild(m); }
+      m.setAttribute('content', c);
+    } catch (e) {}
   }
   toggle = () => this.setState(s => {
     const light = !s.light;

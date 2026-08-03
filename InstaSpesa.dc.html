@@ -8,6 +8,8 @@
 <body>
 <x-dc>
 <helmet>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1b1c1b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&amp;display=swap" rel="stylesheet">
@@ -84,7 +86,7 @@
   <main class="main" style="max-width:1000px; margin:0 auto; padding:24px 32px 100px;">
     <a href="Portfolio.dc.html" style="font-family:'Space Grotesk',sans-serif; font-size:13px; letter-spacing:0.5px; color:var(--foot);" style-hover="color:var(--accent); text-shadow:0 0 9px var(--glow);">← back to home</a>
 
-    <section class="phero" style="margin-top:24px; border-radius:16px; background:linear-gradient(115deg,#8a2020 0%,#c62828 55%,#ef9a9a 100%); padding:40px 44px; display:flex; align-items:center; justify-content:space-between; gap:28px;">
+    <section class="phero" style="margin-top: 24px; border-radius: 16px; background: linear-gradient(115deg, #C8202EEB, #F02F3FEB, #D74C57EB); padding: 40px 44px; display: flex; align-items: center; justify-content: space-between; gap: 28px">
       <div>
         <p style="font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:2px; color:rgba(255,255,255,0.75);">GROCERY E-COMMERCE · UX REDESIGN</p>
         <h1 class="phero-h1" style="font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:46px; letter-spacing:0.5px; color:#fff; margin-top:10px;">Istant Spesa</h1>
@@ -92,7 +94,7 @@
       <img src="assets/instaspesa-logo.png" alt="Istant Spesa logo" class="pherologo" style="flex:0 0 auto; width:96px; height:96px; object-fit:contain;">
     </section>
 
-    <p class="lead" style="margin-top:34px; font-size:21px; line-height:1.5; color:var(--text); max-width:760px;">Redesigning a supermarket’s online store around the pain points that made me abandon the real one.</p>
+    <p class="lead" style="margin-top: 34px; font-size: 21px; line-height: 1.5; color: #FFFFFF; max-width: 760px; font-family: Bricolage Grotesque">Redesigning a supermarket’s online store around the pain points that made me abandon the real one.</p>
 
     <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:14px 44px;">
       <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">TYPE</p><p style="font-size:15px; color:var(--muted); margin-top:4px;">University final project</p></div>
@@ -114,9 +116,9 @@
     <div style="margin-top:24px; background:var(--card2-bg); border:1px solid var(--card-border); border-radius:12px; padding:22px;">
       <p style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">MAIN CHALLENGES</p>
       <ul style="margin-top:12px; display:flex; flex-direction:column; gap:9px; list-style:none;">
-        <li style="font-size:15.5px; line-height:1.5; color:var(--muted);"><strong style="color:var(--strong); font-weight:600;">Findability</strong> — locating one item in a huge catalogue.</li>
-        <li style="font-size:15.5px; line-height:1.5; color:var(--muted);"><strong style="color:var(--strong); font-weight:600;">Information architecture</strong> — hundreds of categories, always knowing where you are.</li>
-        <li style="font-size:15.5px; line-height:1.5; color:var(--muted);"><strong style="color:var(--strong); font-weight:600;">Cart clarity</strong> — total, quantities and substitutions in plain sight.</li>
+        <li style="font-size:15.5px; line-height:1.5; color:var(--muted);"><strong style="color: #FFFFFF; font-weight: 600">Findability</strong> — locating one item in a huge catalogue.</li>
+        <li style="font-size:15.5px; line-height:1.5; color:var(--muted);"><strong style="color: #FFFFFF; font-weight: 600">Information architecture</strong> — hundreds of categories, always knowing where you are.</li>
+        <li style="font-size:15.5px; line-height:1.5; color:var(--muted);"><strong style="color: #FFFFFF; font-weight: 600">Cart clarity</strong> — total, quantities and substitutions in plain sight.</li>
       </ul>
     </div>
 
@@ -144,8 +146,9 @@
     </section>
 
     <footer style="margin-top:70px; padding-top:22px; border-top:1px solid var(--hairline); text-align:center; font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.4px; color:var(--foot); line-height:1.7;">
-      <p>&copy; 2026 Marco Faccin. All rights reserved.</p>
-      <p style="font-size:11.5px; color:var(--foot2);">Project work &mdash; credits to the respective owners.</p>
+      <p>© 2026 Marco Faccin. All rights reserved.</p>
+      <p style="font-size:11.5px; color:var(--foot2);">Project work — credits to the respective owners.</p>
+      <p style="font-size:11.5px; color:var(--foot2);">Built with Claude, designed by a human.</p>
     </footer>
   </main>
 </div>
@@ -157,6 +160,11 @@ class Component extends DCLogic {
   applyThemeBg() {
     const c = this.state.light ? '#fbf6e9' : '#1b1c1b';
     try { document.documentElement.style.background = c; document.body.style.background = c; } catch (e) {}
+    try {
+      let m = document.querySelector('meta[name="theme-color"]');
+      if (!m) { m = document.createElement('meta'); m.setAttribute('name', 'theme-color'); document.head.appendChild(m); }
+      m.setAttribute('content', c);
+    } catch (e) {}
   }
   toggle = () => this.setState(s => {
     const light = !s.light;

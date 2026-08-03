@@ -8,6 +8,8 @@
 <body>
 <x-dc>
 <helmet>
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1b1c1b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600&amp;display=swap" rel="stylesheet">
@@ -94,7 +96,7 @@
 
     <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:14px 44px;">
       <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">TYPE</p><p style="font-size:15px; color:var(--muted); margin-top:4px;">HIT UX Challenge design sprint</p></div>
-      <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">TEAM</p><p style="font-size:15px; color:var(--muted); margin-top:4px;">4 designers &middot; 7 days</p></div>
+      <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">TEAM</p><p style="font-size:15px; color:var(--muted); margin-top:4px;">6 designers &middot; 7 days</p></div>
       <div><p style="font-family:'Space Grotesk',sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">FOCUS</p><p style="font-size:15px; color:var(--muted); margin-top:4px;">UX &middot; Information architecture</p></div>
     </div>
 
@@ -105,7 +107,7 @@
       </div>
       <div style="background:var(--card2-bg); border:1px solid var(--card-border); border-radius:12px; padding:22px;">
         <p style="font-family:'Space Grotesk',sans-serif; font-size:12px; letter-spacing:1.5px; color:var(--accent); text-shadow:0 0 9px var(--glow);">WHY</p>
-        <p style="font-size:15.5px; line-height:1.55; color:var(--muted); margin-top:10px;">Real-client sprint by Hub Innovazione Trentino &mdash; hands-on UX research and redesign on a live product.</p>
+        <p style="font-size:15.5px; line-height:1.55; color:var(--muted); margin-top:10px;">The brief was to add a podcast section to the existing product &mdash; but it grew into a broader redesign of the site itself, rethinking the UX end to end.</p>
       </div>
     </div>
 
@@ -144,6 +146,7 @@
     <footer style="margin-top:70px; padding-top:22px; border-top:1px solid var(--hairline); text-align:center; font-family:'Space Grotesk',sans-serif; font-size:12.5px; letter-spacing:0.4px; color:var(--foot); line-height:1.7;">
       <p>&copy; 2026 Marco Faccin. All rights reserved.</p>
       <p style="font-size:11.5px; color:var(--foot2);">Project work &mdash; credits to the respective owners.</p>
+      <p style="font-size:11.5px; color:var(--foot2);">Built with Claude, designed by a human.</p>
     </footer>
   </main>
 </div>
@@ -155,6 +158,11 @@ class Component extends DCLogic {
   applyThemeBg() {
     const c = this.state.light ? '#fbf6e9' : '#1b1c1b';
     try { document.documentElement.style.background = c; document.body.style.background = c; } catch (e) {}
+    try {
+      let m = document.querySelector('meta[name="theme-color"]');
+      if (!m) { m = document.createElement('meta'); m.setAttribute('name', 'theme-color'); document.head.appendChild(m); }
+      m.setAttribute('content', c);
+    } catch (e) {}
   }
   toggle = () => this.setState(s => {
     const light = !s.light;
